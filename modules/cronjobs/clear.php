@@ -3,7 +3,7 @@ $Module = $Params['Module'];
 
 $tpl = eZTemplate::factory();
 $http = eZHTTPTool::instance();
-$manager = ProcessManager::instance();
+$manager = OCCronJobProcessManager::instance();
 $outputs = array();
 
 if ( $http->hasVariable( 'log_output' ) )
