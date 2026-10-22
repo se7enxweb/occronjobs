@@ -1,20 +1,35 @@
 {
-    "name": "opencontent/occronjobs-ls",
-    "description": "OpenContent CronTab Viewer",
+    "name": "se7enxweb/occronjobs",
+    "description": "Exponential extension that shows the server crontab and the configured cronjob parts in the admin, starts runcronjobs.php parts on demand and shows their output.",
     "type": "ezpublish-legacy-extension",
-    "authors": [        
+    "keywords": [ "Exponential", "extension", "cronjobs", "crontab", "runcronjobs", "admin" ],
+    "homepage": "https://github.com/se7enxweb/occronjobs",
+    "license": "GPL-2.0-only",
+    "authors": [
         {
             "name": "OpenContent",
-            "homepage": "http://www.opencontent.it"
+            "homepage": "http://www.opencontent.it",
+            "role": "Original Author"
+        },
+        {
+            "name": "7x",
+            "homepage": "https://se7enx.com",
+            "email": "info@se7enx.com",
+            "role": "Maintainer"
         }
     ],
-    "license": "GPL-2.0",    
+    "support": {
+        "issues": "https://github.com/se7enxweb/occronjobs/issues",
+        "source": "https://github.com/se7enxweb/occronjobs"
+    },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "ezsystems/ezpublish-legacy-installer": "*"
+        "php": ">=8.0",
+        "se7enxweb/ezpublish-legacy-installer": "*"
     },
     "extra": {
-        "ezpublish-legacy-extension-name": "occronjobs"
+        "ezpublish-legacy-extension-name": "occronjobs",
+        "installer-name": "occronjobs"
     }
 }
-
