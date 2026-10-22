@@ -11,6 +11,9 @@ LinkNames[occronjobs]=Crontab viewer
 #Tabs[]=occronjobs
 
 [Topmenu_occronjobs]
+# Icon: the name of an icon admin4 draws before the tab's name, from design.ini
+# [AdminDesignSettings] IconList[] (Bootstrap Icons); a name it does not know draws no icon.
+Icon=clock
 NavigationPartIdentifier=occronjobnavigationpart
 Name=Cronjobs
 Tooltip=Cronjobs dashboard
