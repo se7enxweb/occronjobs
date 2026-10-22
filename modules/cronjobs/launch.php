@@ -19,6 +19,14 @@ if( $part == 'global' )
 	$part = '';
 }
 
+// Every word that reaches the command line is quoted for the shell unless it
+// only holds characters a cronjob part, siteaccess, option or date can hold.
+$shellWord = function( $word )
+{
+	$word = (string)$word;
+	return preg_match( '#^[A-Za-z0-9_./:=-]+$#', $word ) ? $word : escapeshellarg( $word );
+};
+$part = implode( ' ', array_map( $shellWord, preg_split( '/\s+/', trim( (string)$part ), -1, PREG_SPLIT_NO_EMPTY ) ) );
 
 $options = eZINI::instance( 'occronjobs.ini' )->variable( 'CronOptions', 'PreOption' );
 foreach( $options as $name => $type )
@@ -28,7 +36,7 @@ foreach( $options as $name => $type )
 		if ( $type == 'boolean' )
 			$part = "--$name " . $part;
 		else
-			$part = " --$name={$http->variable( $name )} " . $part;
+			$part = ' ' . $shellWord( "--$name=" . $http->variable( $name ) ) . ' ' . $part;
 	}
 }
 
@@ -37,7 +45,7 @@ foreach( $lastOptions as $name => $type )
 {
 	if ( $http->variable( $name, false ) )
 	{		
-		$part .= " $name={$http->variable( $name )} ";
+		$part .= ' ' . $shellWord( "$name=" . $http->variable( $name ) ) . ' ';
 	}
 }
 
